@@ -1,6 +1,6 @@
 -include _.mk
 TOP_BASE= ..
-BUILD_BASE= $(TOP_BASE)/makeSure
+BUILD_BASE= $(TOP_BASE)/makeSURE
 NAME?= goSH
 #CONFIG?= Release
 
