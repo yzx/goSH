@@ -1,5 +1,9 @@
 #include "goSH.h"
 
+#ifndef HPLAT
+#error Host Platform must be defined
+#endif
+
 int main(
 	int    argc,
 	char * argv[  ]
@@ -8,20 +12,22 @@ int main(
 
 	r= yzxSetup(  );
 
-	( r ) ?	printf( "Setup failed\n" )
-	      : printf( "App begins\n" );
+	( r ) ?	yzxPRINTF( "Setup failed\n" )
+	      : yzxPRINTF( "App begins\n" );
+
+	yzxUtil(  );
 
 	while( !r ) {
 	    //
 	    r= yzxLoop(  );
 	}
 
-	printf( "App concludes\n" );
+	yzxPRINTF( "App concludes on %s\n", STR(HPLAT) );
 
 	r= yzxShutdown(  );
 
-	( r ) ?	printf( "Shutdown failed\n" )
-	      : printf( "App done\n" );
+	( r ) ?	yzxPRINTF( "Shutdown failed\n" )
+	      : yzxPRINTF( "App done\n" );
 
 	return( r );
 }
